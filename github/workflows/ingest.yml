@@ -1,0 +1,40 @@
+# Ortak Yayın Modu: "[mifrm] ..." başlıklı issue → doğrula → data/ → commit → Pages yeniden yayın.
+name: ingest
+on:
+  issues:
+    types: [opened]
+permissions:
+  contents: write
+  issues: write
+  actions: write
+concurrency:
+  group: mifrm-ingest
+  cancel-in-progress: false
+jobs:
+  apply:
+    if: startsWith(github.event.issue.title, '[mifrm]')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: ${{ github.event.repository.default_branch }}
+      NUM: ${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: "${{ github.event.repository.default_branch }}" }
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - id: run
+        run: node tools/ingest.mjs   # issue gövdesi kabuğa verilmez; yalnızca olay dosyasından okunur
+      - name: Commit ve yayın
+        if: steps.run.outputs.changed == '1'
+        run: |
+          git config user.name "mifrm-bot"; git config user.email "mifrm-bot@users.noreply.github.com"
+          git add data && git commit -m "data: issue #$NUM"
+          for i in 1 2 3; do git pull --rebase origin "$BRANCH" && git push origin "HEAD:$BRANCH" && break; sleep 3; done
+          gh workflow run pages.yml --ref "$BRANCH"
+      - name: Yanıtla ve kapat
+        if: always()
+        run: |
+          [ -f result.md ] || echo "❌ Beklenmeyen hata; Actions günlüğüne bakın." > result.md
+          gh issue comment "$NUM" --body-file result.md
+          gh issue close "$NUM"
