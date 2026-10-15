@@ -1,0 +1,100 @@
+name: Otomatik Zip Acici
+
+on:
+  push:
+    paths:
+      - "ai-cartoon-studio.zip"
+      - ".github/workflows/zip-acici.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repo Kopyala
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: ZIP Kontrol
+        run: |
+          if [ ! -f "ai-cartoon-studio.zip" ]; then
+            echo "HATA: ai-cartoon-studio.zip bulunamadi."
+            exit 1
+          fi
+
+          echo "ZIP bulundu:"
+          ls -lh ai-cartoon-studio.zip
+
+      - name: ZIP Icerigini Kontrol Et
+        run: |
+          unzip -l ai-cartoon-studio.zip
+
+      - name: ZIP'i Ac
+        run: |
+          mkdir -p .zip-temp
+          unzip -o "ai-cartoon-studio.zip" -d .zip-temp
+
+          echo "ZIP acildi. Icerik:"
+          find .zip-temp -maxdepth 3 -type f | sort
+
+      - name: Projeyi Koke Tasi
+        run: |
+          ROOT_DIR=".zip-temp"
+
+          # ZIP tek bir ana klasor iceriyorsa onu otomatik bul
+          ENTRIES=$(find "$ROOT_DIR" -mindepth 1 -maxdepth 1 -printf '%f\n')
+
+          COUNT=$(printf '%s\n' "$ENTRIES" | sed '/^$/d' | wc -l)
+
+          if [ "$COUNT" -eq 1 ] && [ -d "$ROOT_DIR/$(printf '%s\n' "$ENTRIES")" ]; then
+            INNER_DIR="$ROOT_DIR/$(printf '%s\n' "$ENTRIES")"
+          else
+            INNER_DIR="$ROOT_DIR"
+          fi
+
+          echo "Proje klasoru: $INNER_DIR"
+
+          # ZIP icinde workflow dosyasi varsa (.github/workflows/*) onu ATMA:
+          # GitHub, workflow dosyalarina yapilan degisiklikleri push etmek icin
+          # ayrica "workflows" izni ister; varsayilan GITHUB_TOKEN'da bu izin yok
+          # ve push tamamen reddedilir. Bu otomasyon hicbir zaman workflow
+          # dosyalarina dokunmamali; mevcut .github/workflows repo'da oldugu
+          # gibi korunur.
+          if [ -d "$INNER_DIR/.github/workflows" ]; then
+            echo "UYARI: ZIP icinde .github/workflows bulundu, atlaniyor (kopyalanmayacak)."
+            rm -rf "$INNER_DIR/.github/workflows"
+          fi
+
+          # ZIP'den gelen projeyi repo kokune kopyala
+          cp -a "$INNER_DIR"/. .
+
+      - name: ZIP'i Sil
+        run: |
+          rm -f ai-cartoon-studio.zip
+          rm -rf .zip-temp
+
+      - name: Sonucu Kontrol Et
+        run: |
+          echo "Repo kokundeki dosyalar:"
+          find . -maxdepth 2 -type f \
+            ! -path "./.git/*" \
+            | sort
+
+          if [ ! -f "index.html" ]; then
+            echo "HATA: index.html repo kokunde bulunamadi."
+            exit 1
+          fi
+
+          echo "OK: index.html bulundu."
+
+      - name: Degisiklikleri Kaydet
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Zip otomatik olarak ayiklandi"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "41898282+github-actions[bot]@users.noreply.github.com"
