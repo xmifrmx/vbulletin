@@ -1,0 +1,12 @@
+{
+  "id": 2,
+  "slug": "yapay-zeka-hakkinda-ilk-dusunceleriniz",
+  "categoryId": 4,
+  "title": "Yapay zekâ hakkında ilk düşünceleriniz",
+  "author": "Ayşe",
+  "content": "<p>Yapay zekâ araçlarını günlük işlerinizde kullanıyor musunuz?</p><blockquote><p>Önce ihtiyacı tanımlayın.</p></blockquote>",
+  "created": "2026-10-03T12:00:00Z",
+  "updated": "2026-10-03T12:00:00Z",
+  "pinned": false,
+  "locked": false
+}

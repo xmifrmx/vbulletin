@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "topics": [
+    {
+      "id": 1,
+      "slug": "mifrm-classic-forum-a-hos-geldiniz",
+      "title": "MiFRM Classic Forum'a hoş geldiniz",
+      "categoryId": 2,
+      "author": "Yönetici",
+      "created": "2026-10-01T10:00:00Z",
+      "updated": "2026-10-01T10:00:00Z",
+      "pinned": true,
+      "locked": false,
+      "replyCount": 1,
+      "lastAt": "2026-10-02T08:30:00Z",
+      "lastBy": "Misafir"
+    },
+    {
+      "id": 2,
+      "slug": "yapay-zeka-hakkinda-ilk-dusunceleriniz",
+      "title": "Yapay zekâ hakkında ilk düşünceleriniz",
+      "categoryId": 4,
+      "author": "Ayşe",
+      "created": "2026-10-03T12:00:00Z",
+      "updated": "2026-10-03T12:00:00Z",
+      "pinned": false,
+      "locked": false,
+      "replyCount": 2,
+      "lastAt": "2026-10-04T09:45:00Z",
+      "lastBy": "Zeynep"
+    }
+  ]
+}

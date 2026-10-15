@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Genel",
+    "slug": "genel",
+    "description": "Genel tartışmalar ve duyurular",
+    "parentId": null,
+    "order": 1,
+    "active": true,
+    "seoTitle": "",
+    "metaDescription": ""
+  },
+  {
+    "id": 2,
+    "name": "Duyurular",
+    "slug": "duyurular",
+    "description": "Forum duyuruları",
+    "parentId": 1,
+    "order": 1,
+    "active": true,
+    "seoTitle": "",
+    "metaDescription": ""
+  },
+  {
+    "id": 3,
+    "name": "Teknoloji",
+    "slug": "teknoloji",
+    "description": "Yazılım, donanım ve yapay zekâ",
+    "parentId": null,
+    "order": 2,
+    "active": true,
+    "seoTitle": "",
+    "metaDescription": ""
+  },
+  {
+    "id": 4,
+    "name": "Yapay Zekâ",
+    "slug": "yapay-zeka",
+    "description": "Yapay zekâ üzerine konular",
+    "parentId": 3,
+    "order": 1,
+    "active": true,
+    "seoTitle": "",
+    "metaDescription": ""
+  }
+]

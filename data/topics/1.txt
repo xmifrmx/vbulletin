@@ -1,0 +1,12 @@
+{
+  "id": 1,
+  "slug": "mifrm-classic-forum-a-hos-geldiniz",
+  "categoryId": 2,
+  "title": "MiFRM Classic Forum'a hoş geldiniz",
+  "author": "Yönetici",
+  "content": "<p>Bu bir <strong>örnek</strong> konudur. Yönetim bölümünden kategorileri düzenleyebilirsiniz.</p><h2>Neler var?</h2><ul><li>Klasik görünüm</li><li>JSON veri yapısı</li></ul>",
+  "created": "2026-10-01T10:00:00Z",
+  "updated": "2026-10-01T10:00:00Z",
+  "pinned": true,
+  "locked": false
+}

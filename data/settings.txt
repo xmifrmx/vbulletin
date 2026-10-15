@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "siteName": "MiFRM",
+  "tagline": "Classic Forum Engine",
+  "siteUrl": "https://example.github.io/mifrm",
+  "lang": "tr",
+  "logoUrl": "",
+  "seoTitle": "",
+  "seoDescription": "MiFRM ile GitHub Pages üzerinde çalışan klasik forum.",
+  "maxCategoryDepth": 3,
+  "repliesPerPage": 10,
+  "topicsPerPage": 20,
+  "sitemapMax": 1000,
+  "rateLimitPerHour": 5,
+  "maxLinks": 5,
+  "spamWords": [],
+  "peertubeHosts": [],
+  "shared": {
+    "enabled": false,
+    "repo": ""
+  },
+  "counters": {
+    "topic": 3,
+    "reply": 4,
+    "category": 5
+  }
+}

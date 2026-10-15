@@ -1,0 +1,18 @@
+[
+  {
+    "id": 2,
+    "topicId": 2,
+    "author": "Mehmet",
+    "content": "<p>Evet, özellikle metin özetleme için.</p>",
+    "created": "2026-10-03T13:10:00Z",
+    "updated": "2026-10-03T13:10:00Z"
+  },
+  {
+    "id": 3,
+    "topicId": 2,
+    "author": "Zeynep",
+    "content": "<p>Kod yazarken yardımcı oluyor; çıktıyı yine de kontrol ediyorum.</p><pre><code>console.log(\"merhaba\");</code></pre>",
+    "created": "2026-10-04T09:45:00Z",
+    "updated": "2026-10-04T09:45:00Z"
+  }
+]
