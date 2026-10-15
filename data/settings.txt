@@ -2,7 +2,7 @@
   "schema": 1,
   "siteName": "MiFRM",
   "tagline": "Classic Forum Engine",
-  "siteUrl": "https://example.github.io/mifrm",
+  "siteUrl": "https://xmifrmx.github.io/vbulletin/",
   "lang": "tr",
   "logoUrl": "",
   "seoTitle": "",
