@@ -1,4 +1,4 @@
-9{
+{
   "schema": 1,
   "siteName": "Mybulletin Forum",
   "tagline": "Mybulletin Forum Engine",
