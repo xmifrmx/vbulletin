@@ -1,0 +1,2 @@
+{"name":"mifrm-classic-forum-engine","version":"1.0.0","private":true,"type":"module","engines":{"node":">=20"},
+"scripts":{"seed":"node tools/seed.mjs","test":"node tools/test.mjs","build":"node tools/build.mjs","check":"node tools/check.mjs","all":"node tools/test.mjs && node tools/build.mjs && node tools/check.mjs","serve":"python3 -m http.server 8080"}}
