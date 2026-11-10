@@ -1,1 +1,0 @@
-document.addEventListener('click',function(e){var b=e.target.closest('.menu-btn');if(!b)return;var o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(o));document.getElementById('navlist').classList.toggle('open',o)});
